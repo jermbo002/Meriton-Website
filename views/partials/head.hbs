@@ -1,0 +1,16 @@
+<head>
+    <meta charset="utf-8">
+    <title>{{page_title}}</title>
+    <meta name="description" content="{{meta_description}}">
+    <meta property="og:image" content="{{og_img}}">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://use.typekit.net/hwo6uzy.css">
+    <link rel="stylesheet" href="/css/styles.{{cssVersion}}.css">
+    {{#each pageStyles}}
+        <link rel="stylesheet" href="/js/dist/pages/{{this}}" />
+    {{/each}}
+    <link rel="icon" id="favicon" type="image/x-icon" href="/favicon.ico?v2">
+    {{#if useFontAwesome}}
+        {{> fontawesome}}
+    {{/if}}
+</head>

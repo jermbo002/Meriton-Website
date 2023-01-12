@@ -1,0 +1,35 @@
+name: Build and deploy to Dev Env
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js '16.x'
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+        
+    - name: yarn install and build
+      run: |
+        yarn install
+        yarn build
+        rm -r node_modules
+        yarn workspaces focus --production
+        
+    - name: 'Deploy to Azure WebApp'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'si-meriton'
+        slot-name: 'dev'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_DEV_PUBLISH_PROFILE }}
+        package: .

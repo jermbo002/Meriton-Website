@@ -1,0 +1,19 @@
+.c-hdr {
+    @apply fixed top-0 left-0 px-8 py-4 bg-black flex z-50 w-full;
+    color: #fff;
+    justify-content: space-between;
+
+    &__col {
+        @apply flex font-bold;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    &__btn-nav {
+        @apply py-2;
+    }
+    
+    .home & {
+        display: none;
+    }
+}

@@ -1,0 +1,7 @@
+main {
+    padding: var(--hdr-height) 0 0;
+
+    .home & {
+        padding: 0;
+    }
+}

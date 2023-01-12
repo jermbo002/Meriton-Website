@@ -1,0 +1,81 @@
+{
+    "name": "meriton-website",
+    "version": "0.1.0",
+    "description": "Meriton website",
+    "author": "Select Interactive (www.select-interactive.com)",
+    "license": "UNLICENSED",
+    "dependencies": {
+        "body-parser": "^1.20.1",
+        "compression": "^1.7.4",
+        "cookie-parser": "^1.4.6",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "express-handlebars": "^6.0.6",
+        "express-urlrewrite": "^2.0.0",
+        "helmet": "^6.0.1",
+        "mz": "^2.7.0",
+        "node-fetch": "^3.3.0",
+        "nodemon": "^2.0.20"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.20.12",
+        "@babel/plugin-transform-runtime": "^7.19.6",
+        "@babel/preset-env": "^7.20.2",
+        "@tailwindcss/forms": "^0.5.3",
+        "autoprefixer": "^10.4.13",
+        "babel-loader": "^9.1.2",
+        "browser-sync": "^2.27.11",
+        "clean-css": "^5.3.1",
+        "css-loader": "^6.7.3",
+        "css-minimizer-webpack-plugin": "^4.2.2",
+        "eslint": "^8.31.0",
+        "mini-css-extract-plugin": "^2.7.2",
+        "mkdirp": "^1.0.4",
+        "node-sass": "^8.0.0",
+        "npm-run-all": "^4.1.5",
+        "npm-watch": "^0.11.0",
+        "postcss": "^8.4.21",
+        "postcss-custom-media": "^9.0.1",
+        "postcss-import": "^15.1.0",
+        "postcss-nested": "^6.0.0",
+        "sass-loader": "^13.2.0",
+        "style-loader": "^3.3.1",
+        "tailwindcss": "^3.2.4",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1"
+    },
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=9.0.0"
+    },
+    "main": "server/index.js",
+    "start": "server/index.js",
+    "scripts": {
+        "browser-sync": "browser-sync start -p 'localhost:8080' -f 'server' 'static' 'views' --reload-delay 100 --no-inject-changes --no-notify",
+        "build": "webpack --mode=production",
+        "build-sass": "npm-run-all sass tailwind",
+        "build-js": "webpack --mode=production",
+        "dev": "npm-run-all --parallel watch browser-sync",
+        "sass": "node src/build/sass.js",
+        "serve": "nodemon -e js,css,json server/index.js",
+        "start": "node server/index.js",
+        "tailwind": "npx tailwindcss -i ./static/css/styles.css -o ./static/css/styles.css",
+        "watch": "npm-watch",
+        "webpack": "webpack --mode=development"
+    },
+    "watch": {
+        "build-sass": {
+            "patterns": [
+                "/src/sass/"
+            ],
+            "extensions": "scss",
+            "runOnChangeOnly": true
+        },
+        "webpack": {
+            "patterns": "/src/js/",
+            "extensions": "js,scss",
+            "runOnChangeOnly": true
+        }
+    },
+    "packageManager": "yarn@3.3.1"
+}

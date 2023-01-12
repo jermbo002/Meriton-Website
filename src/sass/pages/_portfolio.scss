@@ -1,0 +1,128 @@
+.c-portfolio-hero {
+    @apply grid;
+    align-items: stretch;
+    background: #000;
+    color: #fff;
+    grid-template-columns: 1fr 66.67%;
+    height: 49vh;
+    max-height: 533px;
+    
+    &__col {
+        @apply relative inline-flex;
+        align-items: center;
+        height: 100%;
+
+        &:first-child {
+            @apply p-8;
+        }
+    }
+
+    &__hdr {
+        @apply font-extrabold uppercase;
+        font-size: 44px;
+        line-height: 1.58;
+
+        @include mq($bp-tablet) {
+            font-size: 48px;
+        }
+
+        @include mq($bp-large) {
+            font-size: 52px;
+        }
+
+        @include mq($bp-wide) {
+            font-size: 56px;
+        }
+
+        @include mq($bp-xwide) {
+            font-size: 60px;
+        }
+    }
+
+    &__bg {
+        @apply relative w-full;
+        background: url(/img/portfolio/hero.v1.jpg) no-repeat center center;
+        background-size: cover;
+        height: 100%;
+
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(/img/portfolio/hero@2.v1.jpg);
+        }
+    }
+}
+
+.c-portfolio-logos {
+    @apply bg-black flex py-8 px-8;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.c-portfolio-grid {
+    @apply grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    &__cell {
+        @apply flex;
+        height: 45vh;
+        max-height: 487px;
+
+        &.--tall {
+            height: 90vh;
+            max-height: 974px;
+        }
+    }
+
+    &__item {
+        @apply block relative w-full;
+        background-image: var(--bg-img);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+        text-decoration: none;
+
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            background-image: var(--bg-img-twox);
+        }
+
+        &-content {
+            @apply absolute z-10 bottom-6 left-6;
+            color: #fff;
+            transform: translateY(44px);
+            transition: transform .3s ease-in-out;
+        }
+
+        &-name {
+            @apply block mb-4;
+            font-size: 32px;
+            left: 1.5rem;
+            line-height: 1;
+        }
+
+        p {
+            @apply opacity-0;
+            transition: opacity .3s ease-in-out .35s;
+        }
+
+        &:after {
+            @apply absolute opacity-0 top-0 left-0 w-full h-full z-0;
+            background: rgba(23, 23, 23, .75);
+            content: '';
+            transition: opacity .3s ease-in-out;
+        }
+
+        &:hover {
+            &:after {
+                @apply opacity-100;
+            }
+
+            .c-portfolio-grid__item-content {
+                transform: translateY(0);
+            }
+
+            p {
+                @apply opacity-100;
+            }
+        }
+    }
+}
