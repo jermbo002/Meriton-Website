@@ -84,6 +84,12 @@ app.set( 'views', path.join( __dirname, '..', 'views', 'pages' ) );
 
 
 // --------------------
+// Inject Prismic
+// --------------------
+require( './prismic' )( app );
+
+
+// --------------------
 // Set route handlers
 // --------------------
 require( './routes' )( app );

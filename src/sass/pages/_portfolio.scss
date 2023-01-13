@@ -41,12 +41,12 @@
 
     &__bg {
         @apply relative w-full;
-        background: url(/img/portfolio/hero.v1.jpg) no-repeat center center;
+        background: var(--bg-img) no-repeat center center;
         background-size: cover;
         height: 100%;
 
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-image: url(/img/portfolio/hero@2.v1.jpg);
+            background-image: var(--bg-img-twox);
         }
     }
 }
