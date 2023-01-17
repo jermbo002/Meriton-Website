@@ -27,7 +27,7 @@ module.exports = app => {
     // Default route handling
     app.get( '/*', ( req, res ) => {
         try {
-            let route = req.originalUrl.substring( 1 );
+            let route = res.indexPath || req.originalUrl.substring( 1 );
             route = route === '' ? 'home' : route;
             
             res.render( path.join( __dirname, '..', '..', 'views', 'pages', route ), {

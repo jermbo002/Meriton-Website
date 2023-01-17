@@ -59,6 +59,17 @@ async function getScripts( docPath ) {
             }
         } );
 
+        if ( pageSrc === '' ) {
+            fileNames.filter( f => f.indexOf( '.txt' ) === -1 && f.indexOf( '.css' ) === -1 ).forEach( f => {
+                const fileName = f.toLowerCase();
+                const prefix = fileName.substring( 0, fileName.indexOf( '.' ) );
+
+                if ( docPath.indexOf( prefix ) === 0 ) {
+                    pageSrc = `/js/${process.env.jsDir}/pages/${fileName}`;
+                }
+            } );
+        }
+
         return {
             commons,
             pageSrc

@@ -7,52 +7,39 @@
     </div>
 </section>
 <section class="c-portfolio-logos">
-    <img srcset="/img/portfolio/logos/eei.v1.png, /img/portfolio/logos/eei@2.v1.png 2x"
-        src="/img/portfolio/logos/eei.v1.png"
-        width="160" height="60" alt="EEI" />
-    <img srcset="/img/portfolio/logos/hvac.v1.png, /img/portfolio/logos/hvac@2.v1.png 2x"
-        src="/img/portfolio/logos/hvac.v1.png"
-        width="146" height="74" alt="HVAC RNTL" />
-    <img srcset="/img/portfolio/logos/insight.v1.png, /img/portfolio/logos/insight@2.v1.png 2x"
-        src="/img/portfolio/logos/insight.v1.png"
-        width="216" height="83" alt="Insight Partners" />
-    <img srcset="/img/portfolio/logos/mpn.v1.png, /img/portfolio/logos/mpn@2.v1.png 2x"
-        src="/img/portfolio/logos/mpn.v1.png"
-        width="190" height="57" alt="Mechanical Products Nevada" />
-    <img srcset="/img/portfolio/logos/mpsw.v1.png, /img/portfolio/logos/mpsw@2.v1.png 2x"
-        src="/img/portfolio/logos/mpsw.v1.png"
-        width="214" height="44" alt="MPSW" />
-    <img srcset="/img/portfolio/logos/txair.v1.png, /img/portfolio/logos/txair@2.v1.png 2x"
-        src="/img/portfolio/logos/txair.v1.png"
-        width="171" height="84" alt="Texas AirSystems" />
+    {{#each portfolioItems}}
+        <a href="#" data-target="{{id}}">
+            <img src="{{white_logo.url}}"
+                width="{{white_logo.dimensions.width}}"
+                height="{{white_logo.dimensions.height}}"
+                alt="{{white_logo.alt}}"
+                loading="lazy" />
+        </a>
+    {{/each}}
 </section>
 <section class="c-portfolio-grid">
     <div class="c-portfolio-grid__col">
-        <div class="c-portfolio-grid__cell --tall">
-            <a class="c-portfolio-grid__item" href="/portfolio/hvac" style="--bg-img:url(/img/portfolio/customers/hvac.v1.jpg);--bg-img-twox:url(/img/portfolio/customers/hvac@2.v1.jpg);">
-                <div class="c-portfolio-grid__item-content">
-                    <span class="c-portfolio-grid__item-name">HVAC</span>
-                    <p class="c-portfolio-grid-item__desc">Some description here...</p>
-                </div>
-            </a>
-        </div>
+        {{#each leftColItems}}
+            <div data-id="{{id}}" class="c-portfolio-grid__cell {{className}}">
+                <a class="c-portfolio-grid__item" href="{{url}}" style="--bg-img:url({{primaryImage.url}});--bg-img-twox:url({{primaryImage.twoX.url}});">
+                    <div class="c-portfolio-grid__item-content">
+                        <span class="c-portfolio-grid__item-name">{{company_name}}</span>
+                        <p class="c-portfolio-grid-item__desc">{{grid_description}}</p>
+                    </div>
+                </a>
+            </div>
+        {{/each}}
     </div>
     <div class="c-portfolio-grid__col">
-        <div class="c-portfolio-grid__cell">
-            <a class="c-portfolio-grid__item" href="/portfolio/eei" style="--bg-img:url(/img/portfolio/customers/eei.v1.jpg);--bg-img-twox:url(/img/portfolio/customers/eei@2.v1.jpg);">
-                <div class="c-portfolio-grid__item-content">
-                    <span class="c-portfolio-grid__item-name">EEI</span>
-                    <p class="c-portfolio-grid-item__desc">Some description here...</p>
-                </div>
-            </a>
-        </div>
-        <div class="c-portfolio-grid__cell">
-            <a class="c-portfolio-grid__item" href="/portfolio/texas-air-systems" style="--bg-img:url(/img/portfolio/customers/txair.v1.jpg);--bg-img-twox:url(/img/portfolio/customers/txair@2.v1.jpg);">
-                <div class="c-portfolio-grid__item-content">
-                    <span class="c-portfolio-grid__item-name">Texas AirSystems</span>
-                    <p class="c-portfolio-grid-item__desc">Some description here...</p>
-                </div>
-            </a>
-        </div>
+        {{#each rightColItems}}
+            <div data-id="{{id}}" class="c-portfolio-grid__cell {{className}}">
+                <a class="c-portfolio-grid__item" href="{{url}}" style="--bg-img:url({{primaryImage.url}});--bg-img-twox:url({{primaryImage.twoX.url}});">
+                    <div class="c-portfolio-grid__item-content">
+                        <span class="c-portfolio-grid__item-name">{{company_name}}</span>
+                        <p class="c-portfolio-grid-item__desc">{{grid_description}}</p>
+                    </div>
+                </a>
+            </div>
+        {{/each}}
     </div>
 </section>

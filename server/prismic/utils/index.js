@@ -5,6 +5,7 @@ module.exports = class PrismicUtils {
     static routes() {
         return [
             { type: 'home_page', path: '/' },
+            { type: 'portfolio_company', path: '/portfolio/:uid' },
             { type: 'portfolio_landing_page', path: '/portfolio' }
         ];
     }
@@ -19,7 +20,7 @@ module.exports = class PrismicUtils {
 
     static async getSinglePage( { client }, docType ) {
         try {
-            const { data } = await client.getSingle( docType );
+            const { data } = await client.getSingle( docType );{{}}
             return data;
         }
         catch ( e ) {
@@ -48,12 +49,20 @@ module.exports = class PrismicUtils {
 
     static async queryByType( { client }, docType, filters = [], options = {} ) {
         try {
-            const result = await client.getByType( docType, {
+            const rsp = await client.getByType( docType, {
                 predicates: filters,
                 ...options
             } );
 
-            return result;
+            return rsp.results.map( doc => {
+                return {
+                    id: doc.id,
+                    uid: doc.uid,
+                    url: doc.url,
+                    type: doc.type,
+                    ...doc.data
+                };
+            } );
         }
         catch ( e ) {
             throw e;

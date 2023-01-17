@@ -3,7 +3,8 @@ const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const CssMinimizerPlugin = require( 'css-minimizer-webpack-plugin' );
 
 const appEntries = {
-    home: './src/js/pages/home.js'
+    home: './src/js/pages/home.js',
+    portfolio: './src/js/pages/portfolio.js'
 };
 
 module.exports = ( env = { mode: 'development' }, args ) => {
