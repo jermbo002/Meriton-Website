@@ -16,12 +16,13 @@
         justify-content: center;
         left: 40%;
         top: 40%;
-        transition: height .4s cubic-bezier(0, 0, .3, 1),
-                    width .4s cubic-bezier(0, 0, .3, 1),
-                    transform .4s cubic-bezier(0, 0, .3, 1);
+        transition: height .4s ease-in-out,
+                    width .4s ease-in-out,
+                    transform .4s ease-in-out;
         transform: translate3d(0%, 0%, 0);
         transform-style: preserve-3d;
         width: 20%;
+        will-change: height, width, transform;
         z-index: 10;
     }
 
@@ -38,9 +39,10 @@
         line-height: 1.1;;
         max-width: 100%;
         text-decoration: none;
-        transition: background-color .125s linear,
-                    height .4s cubic-bezier(0, 0, .3, 1),
-                    width .4s cubic-bezier(0, 0, .3, 1);
+        transition: background-color .125s ease-in-out,
+                    height .4s ease-in-out,
+                    width .4s ease-in-out;
+        will-change: height, width;
         z-index: 1;
 
         &:hover {

@@ -11,10 +11,10 @@ function handleRouteRequest( app ) {
             const { grid_background_colors } = content;
 
             const color1 = grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
-            const color2 = grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
-            const color3 = grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
-            const color4 = grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
-            const color5 = grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
+            const color2 = color1; // grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
+            const color3 = color1; // grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
+            const color4 = color1; // grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
+            const color5 = color1; // grid_background_colors[Math.floor( Math.random() * ( grid_background_colors.length - 1 ) )].color;
 
             const data = {
                 ...res.locals,

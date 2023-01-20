@@ -22,9 +22,7 @@ class PortfolioMgr {
 
     onPopState() {
         const path = window.location.pathname;
-        console.log( 'here' );
-        console.log( path );
-
+        
         if ( path === '/portfolio' ) {
             PubSub.publish( 'dialog-close' );
         }
@@ -65,13 +63,39 @@ class CompanyMgr {
 class CompanyItem {
     constructor( root ) {
         this.root = root;
+        this.slides = $$( '.c-portfolio-grid__item-slide', this.root );
+        this.addEvents();
+    }
 
+    addEvents() {
         this.root.addEventListener( 'click', ( e ) => {
             e.preventDefault();
             const url = this.root.getAttribute( 'href' );
             history.pushState( {}, '', url );
             new CompanyDialog( url );
         } );
+
+        if ( this.slides && this.slides.length > 1 ) {
+            this.initCarousel();
+        }
+    }
+
+    initCarousel() {
+        this.index = 0;
+        this.length = this.slides.length;
+        setTimeout( () => this.rotate(), 350 );
+    }
+
+    rotate() {
+        this.slides[this.index].classList.remove( '--is-visible' );
+        this.index++;
+
+        if ( this.index === this.length ) {
+            this.index = 0;
+        }
+
+        this.slides[this.index].classList.add( '--is-visible' );
+        setTimeout( () => this.rotate(), 350 );
     }
 }
 
@@ -92,7 +116,7 @@ class CompanyDialog {
 
     async getData() {
         try {
-            this.data = await fetch( `/api/v1/${this.url}` );
+            this.data = await fetch( `/api/v1${this.url}` );
             this.render();
         }
         catch ( e ) {

@@ -25,12 +25,13 @@ function handleRouteRequest( app ) {
                     ? item.portfolio_grid_images[ 0 ]?.image
                     : null;
 
+                item.hasSlides = item.portfolio_grid_images?.length > 1;
                 item.isSplit = item.className === '--split';
                 
                 return item;
             } );
 
-            const halfIndex = Math.floor( portfolioItems.length / 2 );
+            const halfIndex = Math.ceil( portfolioItems.length / 2 );
             const leftColItems = portfolioItems.filter( ( item, i ) => i < halfIndex );
             const rightColItems = portfolioItems.filter( ( item, i ) => i >= halfIndex );
             

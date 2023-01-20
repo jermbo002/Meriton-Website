@@ -89,9 +89,7 @@
 
     &__item {
         @apply block relative w-full;
-        background-image: var(--bg-img);
-        background-position: center center;
-        background-repeat: no-repeat;
+        background: var(--bg-img) no-repeat center center;
         background-size: cover;
         overflow: hidden;
         text-decoration: none;
@@ -100,11 +98,35 @@
             background-image: var(--bg-img-twox);
         }
 
+        &-slides {
+            @apply absolute top-0 left-0 w-full h-full;
+            display: grid;
+            grid: [slide] 1fr / [slide] 1fr;
+            z-index: 1;
+        }
+
+        &-slide {
+            background: var(--bg-img) no-repeat center center;
+            background-size: cover;
+            grid-area: slide;
+            opacity: 0;
+            pointer-events: none;
+
+            &.--is-visible {
+                opacity: 1;
+            }
+
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+                background-image: var(--bg-img-twox);
+            }
+        }
+
         &-content {
             @apply absolute z-10 bottom-6 left-6;
             color: #fff;
             transform: translateY(44px);
             transition: transform .3s ease-in-out;
+            z-index: 2;
         }
 
         &-name {
@@ -152,7 +174,7 @@
     background: #fff;
     justify-content: center;
     opacity: 0;
-    transition: opacity .3s ease-in-out;
+    transition: opacity .6s cubic-bezier(.3, 0, .4, 1);
     z-index: 100;
 
     &.--is-visible {
@@ -163,12 +185,12 @@
         @apply grid relative h-full w-full m-0;
         align-items: stretch;
         grid-template-columns: 32.5% 67.5%;
-        transform: scale(.95);
+        transform: scale(.85) translateY(-2rem);
         transform-origin: center top;
-        transition: transform .3s ease-in-out;
+        transition: transform .6s cubic-bezier(.3, 0, .4, 1);
 
         .--is-visible & {
-            transform: scale(1);
+            transform: scale(1) translateY(0);
         }
     }
 

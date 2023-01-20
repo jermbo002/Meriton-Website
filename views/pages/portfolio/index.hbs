@@ -22,6 +22,13 @@
         {{#each leftColItems}}
             <div data-id="{{id}}" class="c-portfolio-grid__cell {{className}}">
                 <a class="c-portfolio-grid__item" href="{{url}}" style="--bg-img:url({{primaryImage.url}});--bg-img-twox:url({{primaryImage.twoX.url}});">
+                    {{#if hasSlides}}
+                        <div class="c-portfolio-grid__item-slides">
+                            {{#each portfolio_grid_images}}
+                                <div class="c-portfolio-grid__item-slide {{#if @first}}--is-visible{{/if}}" style="--bg-img:url({{image.url}});--bg-img-twox:url({{image.twoX.url}});"></div>
+                            {{/each}}
+                        </div>
+                    {{/if}}
                     <div class="c-portfolio-grid__item-content">
                         <span class="c-portfolio-grid__item-name">{{company_name}}</span>
                         <p class="c-portfolio-grid-item__desc">{{grid_description}}</p>
@@ -34,6 +41,13 @@
         {{#each rightColItems}}
             <div data-id="{{id}}" class="c-portfolio-grid__cell {{className}}">
                 <a class="c-portfolio-grid__item" href="{{url}}" style="--bg-img:url({{primaryImage.url}});--bg-img-twox:url({{primaryImage.twoX.url}});">
+                    {{#if hasSlides}}
+                        <div class="c-portfolio-grid__item-slides">
+                            {{#each portfolio_grid_images}}
+                                <div class="c-portfolio-grid__item-slide" style="--bg-img:url({{image.url}});--bg-img-twox:url({{image.twoX.url}});"></div>
+                            {{/each}}
+                        </div>
+                    {{/if}}
                     <div class="c-portfolio-grid__item-content">
                         <span class="c-portfolio-grid__item-name">{{company_name}}</span>
                         <p class="c-portfolio-grid-item__desc">{{grid_description}}</p>
