@@ -14,7 +14,8 @@ function handleRouteRequest( app ) {
                 }
             } );
 
-            portfolioItems = portfolioItems.map( item => {
+            let isSplit = false;
+            portfolioItems = portfolioItems.map( ( item, i ) => {
                 item.className = item.display_type === 'Tall Cell'
                     ? '--tall'
                     : item.display_type === 'Split Cell'
@@ -27,14 +28,21 @@ function handleRouteRequest( app ) {
 
                 item.hasSlides = item.portfolio_grid_images?.length > 1;
                 item.isSplit = item.className === '--split';
+
+                if ( item.isSplit && !isSplit ) {
+                    item.isFirstSplit = true;
+                    isSplit = true;
+                }
+                else if ( item.isSplit ) {
+                    item.isEndSplit = true;
+                    isSplit = false;
+                }
                 
                 return item;
             } );
 
-            const halfIndex = Math.ceil( portfolioItems.length / 2 );
-            const leftColItems = portfolioItems.filter( ( item, i ) => i < halfIndex );
-            const rightColItems = portfolioItems.filter( ( item, i ) => i >= halfIndex );
-            
+            const leftColItems = portfolioItems.filter( ( item ) => item.portfolio_grid_column === 'Left' );
+            const rightColItems = portfolioItems.filter( ( item ) => item.portfolio_grid_column === 'Right' );            
 
             const data = {
                 ...res.locals,

@@ -39,6 +39,9 @@
     </div>
     <div class="c-portfolio-grid__col">
         {{#each rightColItems}}
+            {{#if isFirstSplit}}
+                <div class="c-portfolio-grid__split-container">
+            {{/if}}
             <div data-id="{{id}}" class="c-portfolio-grid__cell {{className}}">
                 <a class="c-portfolio-grid__item" href="{{url}}" style="--bg-img:url({{primaryImage.url}});--bg-img-twox:url({{primaryImage.twoX.url}});">
                     {{#if hasSlides}}
@@ -54,6 +57,9 @@
                     </div>
                 </a>
             </div>
+            {{#if isEndSplit}}
+                </div>
+            {{/if}}
         {{/each}}
     </div>
 </section>

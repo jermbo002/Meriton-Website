@@ -74,16 +74,32 @@
 // --------------------
 .c-portfolio-grid {
     @apply grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    @include mq($bp-large) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__split-container {
+        @apply grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     &__cell {
         @apply flex;
-        height: 45vh;
-        max-height: 487px;
+        height: 50vw;
+        
+        @include mq($bp-large) {
+            height: 42.5vh;
+            max-height: 459px;
+        }
 
         &.--tall {
-            height: 90vh;
-            max-height: 974px;
+            height: 65vw;
+
+            @include mq($bp-large) {
+                height: 85vh;
+                max-height: 918px;
+            }
         }
     }
 
@@ -187,7 +203,7 @@
         align-items: stretch;
         grid-template-columns: 32.5% 67.5%;
         transform: scale(.85) translateY(-2rem);
-        transform-origin: center top;
+        transform-origin: center center;
         transition: transform .6s cubic-bezier(.3, 0, .4, 1);
 
         .--is-visible & {
@@ -319,8 +335,14 @@
         border: 0;
         cursor: pointer;
         justify-content: center;
+        opacity: .7;
         outline: 0;
         padding: 0;
+        transition: opacity .125s ease;
         z-index: 2;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 }

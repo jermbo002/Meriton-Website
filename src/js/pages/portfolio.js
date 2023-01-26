@@ -133,7 +133,8 @@ class CompanyDialog {
                         <img src="${this.data.color_logo.url}"
                             width="${this.data.color_logo.dimensions.width}"
                             height="${this.data.color_logo.dimensions.height}"
-                            alt="${this.data.color_logo.alt}" />
+                            alt="${this.data.color_logo.alt}"
+                            style="max-width:80%;width:auto;height:160px;" />
                     </h3>
                     <div class="c-portfolio-dialog__overview">${this.data.overview}</div>
                     <ul class="c-portfolio-dialog__list">
