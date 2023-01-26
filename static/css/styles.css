@@ -717,50 +717,63 @@ main{
 }
 
 .c-home{
-  border:2px solid #000;
-  bottom:0;
-  left:0;
-  margin:48px;
-  position:absolute;
-  right:0;
-  top:0
+  border:1px solid #000
+}
+
+@media screen and (min-width:1024px){
+  .c-home{
+    border:2px solid #000;
+    bottom:0;
+    left:0;
+    margin:48px;
+    position:absolute;
+    right:0;
+    top:0
+  }
 }
 
 .c-home__logo{
-  position:absolute;
   display:flex;
   padding:.5rem;
   align-items:center;
   background:var(--hover-bg);
-  border:2px solid #000;
-  height:20%;
+  border:1px solid #000;
+  height:20vh;
   justify-content:center;
-  left:40%;
-  top:40%;
-  transition:height .4s ease-in-out,width .4s ease-in-out,transform .4s ease-in-out;
-  transform:translate3d(0,0,0);
-  transform-style:preserve-3d;
-  width:20%;
-  will-change:height,width,transform;
   z-index:10
 }
 
+@media screen and (min-width:1024px){
+  .c-home__logo{
+    position:absolute;
+    border:2px solid #000;
+    height:20%;
+    left:40%;
+    top:40%;
+    transition:height .4s ease-in-out,width .4s ease-in-out,transform .4s ease-in-out;
+    transform:translate3d(0,0,0);
+    transform-style:preserve-3d;
+    width:20%;
+    will-change:height,width,transform
+  }
+}
+
 .c-home__bl,.c-home__br,.c-home__tl,.c-home__tr{
-  position:absolute;
   display:flex;
   --tw-bg-opacity:1;
   background-color:rgb(255 255 255 / var(--tw-bg-opacity));
   font-weight:700;
   align-items:center;
+  border:1px solid #000;
   color:#000;
-  font-size:48px;
+  height:20vh;
+  font-size:36px;
   justify-content:center;
   letter-spacing:1px;
   line-height:1.1;
   max-width:100%;
   text-decoration:none;
-  transition:background-color .125s ease-in-out,height .4s ease-in-out,width .4s ease-in-out;
-  will-change:height,width;
+  transition:background-color .125s ease-in-out;
   z-index:1
 }
 
@@ -768,44 +781,58 @@ main{
   background-color:var(--hover-bg)
 }
 
-.c-home__tl{
-  border:2px solid #000;
-  bottom:auto;
-  height:40%;
-  left:0;
-  right:auto;
-  top:0;
-  width:60%
+@media screen and (min-width:1024px){
+  .c-home__bl,.c-home__br,.c-home__tl,.c-home__tr{
+    position:absolute;
+    border:2px solid #000;
+    font-size:42px;
+    transition:background-color .125s ease-in-out,height .4s ease-in-out,width .4s ease-in-out;
+    will-change:height,width
+  }
 }
 
-.c-home__tr{
-  border:2px solid #000;
-  bottom:auto;
-  height:60%;
-  left:auto;
-  right:0;
-  top:0;
-  width:40%
+@media screen and (min-width:1200px){
+  .c-home__bl,.c-home__br,.c-home__tl,.c-home__tr{
+    font-size:48px
+  }
 }
 
-.c-home__bl{
-  border:2px solid #000;
-  bottom:0;
-  height:60%;
-  left:0;
-  right:auto;
-  top:auto;
-  width:40%
-}
+@media screen and (min-width:1024px){
+  .c-home__tl{
+    bottom:auto;
+    height:40%;
+    left:0;
+    right:auto;
+    top:0;
+    width:60%
+  }
 
-.c-home__br{
-  border:2px solid #000;
-  bottom:0;
-  height:40%;
-  left:auto;
-  right:0;
-  top:auto;
-  width:60%
+  .c-home__tr{
+    bottom:auto;
+    height:60%;
+    left:auto;
+    right:0;
+    top:0;
+    width:40%
+  }
+
+  .c-home__bl{
+    bottom:0;
+    height:60%;
+    left:0;
+    right:auto;
+    top:auto;
+    width:40%
+  }
+
+  .c-home__br{
+    bottom:0;
+    height:40%;
+    left:auto;
+    right:0;
+    top:auto;
+    width:60%
+  }
 }
 
 .c-portfolio-hero{
@@ -958,7 +985,7 @@ main{
   color:#fff;
   transform:translateY(44px);
   transition:transform .3s ease-in-out;
-  z-index:2
+  z-index:3
 }
 
 .c-portfolio-grid__item-name{
@@ -978,13 +1005,13 @@ main{
   position:absolute;
   top:0;
   left:0;
-  z-index:0;
   height:100%;
   width:100%;
   opacity:0;
   background:rgba(23,23,23,.75);
   content:'';
-  transition:opacity .3s ease-in-out
+  transition:opacity .3s ease-in-out;
+  z-index:2
 }
 
 .c-portfolio-grid__item:hover:after{
@@ -1130,6 +1157,7 @@ main{
 .c-portfolio-dialog__website{
   text-align:left;
   border-bottom:3px solid #000;
+  margin:0 0 1.5rem;
   padding-bottom:4px
 }
 
@@ -1149,6 +1177,27 @@ main{
   font-weight:var(--font-weight-bold);
   line-height:1;
   text-decoration:none
+}
+
+.c-portfolio-dialog__nav{
+  display:flex;
+  gap:1rem
+}
+
+.c-portfolio-dialog__nav a,.c-portfolio-dialog__nav span{
+  font-size:16px;
+  font-weight:var(--font-weight-bold);
+  line-height:1
+}
+
+.c-portfolio-dialog__nav a{
+  text-decoration:none;
+  text-transform:uppercase;
+  color:#000
+}
+
+.c-portfolio-dialog__nav a:hover{
+  color:#000
 }
 
 .c-portfolio-dialog__btn-close{

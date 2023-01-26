@@ -66,6 +66,22 @@ function handleRouteRequest( app ) {
             const data = await PrismicHelpers.getByUID( req.prismic, 'portfolio_company', uid );
             data.overview = PrismicHelpers.getRichTextHTML( data.overview );
 
+            const portfolioItems = await PrismicHelpers.queryByType( req.prismic, 'portfolio_company', [], {
+                orderings: {
+                    field: 'my.portfolio_company.display_order'
+                }
+            } );
+
+            portfolioItems.forEach( ( item, i ) => {
+                if ( item.uid === uid ) {
+                    const prevIndex = i === 0 ? portfolioItems.length - 1 : i - 1;
+                    const nextIndex = i === portfolioItems.length - 1 ? 0 : i + 1;
+
+                    data.prevLink = portfolioItems[prevIndex].url;
+                    data.nextLink = portfolioItems[nextIndex].url;
+                }
+            } );
+
             res.status( 200 ).json( {
                 data,
                 message: 'ok',

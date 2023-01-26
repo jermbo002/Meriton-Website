@@ -145,6 +145,9 @@ class CompanyDialog {
                     <div class="c-portfolio-dialog__website">
                         <a href="${this.data.website}" target="_blank" rel="noopener">${this.data.website.replace( /http\:\/\//i, '' ).replace( /https\:\/\//i, '' ).replace( /www\./i, '' )}</a>
                     </div>
+                    <div class="c-portfolio-dialog__nav">
+                        <a href="${this.data.prevLink}">Prev</a><span>/</span><a href="${this.data.nextLink}">Next</a>
+                    </div>
                 </div>
                 <div class="c-portfolio-dialog__col" style="--bg:url(${this.data.popup_image.url});--bg-twoX:url(${this.data.popup_image.twoX.url});">
                     <button class="c-portfolio-dialog__btn-close">
@@ -162,6 +165,14 @@ class CompanyDialog {
             requestAnimationFrame( () => {
                 this.root.classList.add( '--is-visible' );
                 $( '.c-portfolio-dialog__btn-close', this.root ).addEventListener( 'click', () => history.back() );
+                const portfolioNav = $( '.c-portfolio-dialog__nav', this.root );
+                $$( 'a', portfolioNav ).forEach( link => link.addEventListener( 'click', ( e ) => {
+                    e.preventDefault();
+                    this.destroy();
+                    const url = link.getAttribute( 'href' );
+                    history.pushState( {}, '', url );
+                    new CompanyDialog( url );
+                } ) );
             } );
         } );
     }

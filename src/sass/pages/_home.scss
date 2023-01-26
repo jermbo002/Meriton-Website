@@ -1,92 +1,119 @@
 .c-home {
-    border: 2px solid #000;
-    bottom: 0;
-    left: 0;
-    margin: 48px;
-    position: absolute;
-    right: 0;
-    top: 0;
+    border: 1px solid #000;
+
+    @include mq($bp-large) {
+        border: 2px solid #000;
+        bottom: 0;
+        left: 0;
+        margin: 48px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
 
     &__logo {
-        @apply absolute flex p-2;
+        @apply flex p-2;
         align-items: center;
         background: var(--hover-bg);
-        border: 2px solid #000;
-        height: 20%;
+        border: 1px solid #000;
+        height: 20vh;
         justify-content: center;
-        left: 40%;
-        top: 40%;
-        transition: height .4s ease-in-out,
-                    width .4s ease-in-out,
-                    transform .4s ease-in-out;
-        transform: translate3d(0%, 0%, 0);
-        transform-style: preserve-3d;
-        width: 20%;
-        will-change: height, width, transform;
         z-index: 10;
+
+        @include mq($bp-large) {
+            @apply absolute; 
+            border: 2px solid #000;
+            height: 20%;
+            left: 40%;
+            top: 40%;
+            transition: height .4s ease-in-out,
+                        width .4s ease-in-out,
+                        transform .4s ease-in-out;
+            transform: translate3d(0%, 0%, 0);
+            transform-style: preserve-3d;
+            width: 20%;
+            will-change: height, width, transform;
+        }
     }
 
     &__tl,
     &__tr,
     &__bl,
     &__br {
-        @apply absolute flex bg-white font-bold;
+        @apply flex bg-white font-bold;
         align-items: center;
+        border: 1px solid #000;
         color: #000;
-        font-size: 48px;
+        height: 20vh;
+        font-size: 36px;
         justify-content: center;
         letter-spacing: 1px;
-        line-height: 1.1;;
+        line-height: 1.1;
         max-width: 100%;
         text-decoration: none;
-        transition: background-color .125s ease-in-out,
-                    height .4s ease-in-out,
-                    width .4s ease-in-out;
-        will-change: height, width;
+        transition: background-color .125s ease-in-out;
         z-index: 1;
 
         &:hover {
             background-color: var(--hover-bg);
         }
+
+        @include mq($bp-large) {
+            @apply absolute;
+            border: 2px solid #000;
+            font-size: 42px;
+            transition: background-color .125s ease-in-out,
+                    height .4s ease-in-out,
+                    width .4s ease-in-out;
+            will-change: height, width;    
+        }
+
+        @include mq($bp-wide) {
+            font-size: 48px;
+        }
     }
 
     &__tl {
-        border: 2px solid #000;
-        bottom: auto;
-        height: 40%;
-        left: 0;
-        right: auto;
-        top: 0;
-        width: 60%;
+        @include mq($bp-large) {
+            bottom: auto;
+            height: 40%;
+            left: 0;
+            right: auto;
+            top: 0;
+            width: 60%;    
+        }
     }
 
     &__tr {
-        border: 2px solid #000;
-        bottom: auto;
-        height: 60%;
-        left: auto;
-        right: 0;
-        top: 0;
-        width: 40%;
+        @include mq($bp-large) {
+            bottom: auto;
+            height: 60%;
+            left: auto;
+            right: 0;
+            top: 0;
+            width: 40%;
+        }
     }
 
     &__bl {
-        border: 2px solid #000;
-        bottom: 0;
-        height: 60%;
-        left: 0;
-        right: auto;
-        top: auto;
-        width: 40%;
+        @include mq($bp-large) {
+            bottom: 0;
+            height: 60%;
+            left: 0;
+            right: auto;
+            top: auto;
+            width: 40%;
+        }
     }
 
     &__br {
-        border: 2px solid #000;
-        bottom: 0;
-        height: 40%;
-        left: auto;
-        right: 0;
-        top: auto;
-        width: 60%;
+        @include mq($bp-large) {
+            bottom: 0;
+            height: 40%;
+            left: auto;
+            right: 0;
+            top: auto;
+            width: 60%;
+        }
     }
 }
