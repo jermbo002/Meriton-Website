@@ -100,11 +100,17 @@ class CompanyItem {
 }
 
 class CompanyDialog {
-    constructor( url ) {
+    constructor( url, noAnimation = false ) {
         this.url = url;
         this.data = {};
+        this.noAnimation = noAnimation;
         this.root = document.createElement( 'div' );
         this.root.classList.add( 'c-portfolio-dialog' );
+
+        if ( noAnimation ) {
+            this.root.classList.add( '--no-animation' );
+        }
+        
         this.getData();
 
         PubSub.subscribe( 'dialog-close', () => {
@@ -165,14 +171,18 @@ class CompanyDialog {
 
             requestAnimationFrame( () => {
                 this.root.classList.add( '--is-visible' );
+                
                 $( '.c-portfolio-dialog__btn-close', this.root ).addEventListener( 'click', () => history.back() );
+                
                 const portfolioNav = $( '.c-portfolio-dialog__nav', this.root );
+
                 $$( 'a', portfolioNav ).forEach( link => link.addEventListener( 'click', ( e ) => {
                     e.preventDefault();
+                    this.root.classList.add( '--no-animation' );
                     this.destroy();
                     const url = link.getAttribute( 'href' );
                     history.pushState( {}, '', url );
-                    new CompanyDialog( url );
+                    new CompanyDialog( url, true );
                 } ) );
             } );
         } );

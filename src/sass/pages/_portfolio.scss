@@ -194,6 +194,11 @@
     transition: opacity .6s cubic-bezier(.3, 0, .4, 1);
     z-index: 100;
 
+    &.--no-animation {
+        transition: none;
+    }
+
+    &.--no-animation,
     &.--is-visible {
         opacity: 1;
     }
@@ -206,6 +211,11 @@
         transform-origin: center center;
         transition: transform .6s cubic-bezier(.3, 0, .4, 1);
 
+        .--no-animation & {
+            transition: none;
+        }
+
+        .--no-animation &,
         .--is-visible & {
             transform: scale(1) translateY(0);
         }
